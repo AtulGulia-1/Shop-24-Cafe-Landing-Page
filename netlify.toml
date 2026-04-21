@@ -1,0 +1,11 @@
+[build]
+  # This command builds your Next.js application
+  command = "npm run build"
+  
+  # Because we configured Next.js for a static export (output: 'export'),
+  # the compiled HTML/CSS/JS is placed in the 'out' directory.
+  publish = "out"
+
+[build.environment]
+  # Using Node.js version 20 for optimal performance and compatibility
+  NODE_VERSION = "20"
