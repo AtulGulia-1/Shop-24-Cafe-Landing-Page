@@ -13,10 +13,10 @@ export default function Home() {
       </div>
       
       {/* 
-        The LocationSection is sticky to the bottom. This creates a parallax/drawer 
-        effect when the z-10 CoffeeCanvas scrolls past it.
+        The LocationSection is sticky to the bottom on desktop. This creates a parallax/drawer 
+        effect when the z-10 CoffeeCanvas scrolls past it. On mobile, it's relative to allow normal scrolling since the content exceeds 100vh.
       */}
-      <div className="sticky bottom-0 left-0 w-full z-0 flex flex-col justify-end">
+      <div className="relative md:sticky md:bottom-0 left-0 w-full z-0 flex flex-col justify-end">
         <LocationSection />
       </div>
     </main>

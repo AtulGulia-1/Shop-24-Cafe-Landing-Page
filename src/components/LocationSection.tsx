@@ -51,7 +51,7 @@ export default function LocationSection() {
             </div>
             <div>
               <p className="text-sm text-gray-500 uppercase tracking-widest mb-1">Instagram</p>
-              <p className="text-white text-xl">@shop24seven.cafebahadurgarh</p>
+              <p className="text-white text-base sm:text-xl break-all sm:break-normal">@shop24seven.cafebahadurgarh</p>
             </div>
           </a>
         </div>
@@ -92,10 +92,12 @@ export default function LocationSection() {
       </div>
 
       {/* Credit Footer */}
-      <div className="absolute bottom-6 w-full text-center z-20 pointer-events-none mix-blend-difference">
-        <p className="text-gray-400 text-xs md:text-sm tracking-widest font-mono">
-          DESIGNED BY ATUL GULIA <span className="text-red-500">❤️</span>
-        </p>
+      <div className="absolute bottom-6 w-full flex justify-center z-20 pointer-events-none">
+        <div className="bg-black/60 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+          <p className="text-gray-300 text-xs md:text-sm tracking-widest font-mono">
+            DESIGNED BY ATUL GULIA <span className="text-red-500">❤️</span>
+          </p>
+        </div>
       </div>
 
     </section>
