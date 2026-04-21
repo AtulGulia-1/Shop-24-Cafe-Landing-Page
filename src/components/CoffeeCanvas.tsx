@@ -95,12 +95,17 @@ export default function CoffeeCanvas() {
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas(); // initial size & draw
 
+    let animationFrameId: number;
     const unsubscribe = smoothFrameIndex.on("change", (latest) => {
-      renderFrame(Math.round(latest));
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(() => {
+        renderFrame(Math.round(latest));
+      });
     });
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      cancelAnimationFrame(animationFrameId);
       unsubscribe();
     };
   }, [images, imagesLoaded, smoothFrameIndex]);
@@ -212,7 +217,7 @@ export default function CoffeeCanvas() {
           </motion.div>
 
           {/* Section 1: The Sensory Peak */}
-          <motion.div style={{ opacity: s1Opacity, y: s1Y }} className="absolute inset-0 flex flex-col items-center justify-center px-6 bg-brand-dark/60 backdrop-blur-sm">
+          <motion.div style={{ opacity: s1Opacity, y: s1Y }} className="absolute inset-0 flex flex-col items-center justify-center px-6 bg-brand-dark/80">
             <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-white drop-shadow-2xl mb-8">
               BORN IN THE <span className="text-brand-lime">BREW.</span>
             </h2>
@@ -222,7 +227,7 @@ export default function CoffeeCanvas() {
           </motion.div>
 
           {/* Section 2: The Lifestyle Alignment */}
-          <motion.div style={{ opacity: s2Opacity, y: s2Y }} className="absolute inset-0 flex items-center justify-center px-6 md:px-24 bg-brand-dark/80 backdrop-blur-sm">
+          <motion.div style={{ opacity: s2Opacity, y: s2Y }} className="absolute inset-0 flex items-center justify-center px-6 md:px-24 bg-brand-dark/90">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 max-w-7xl mx-auto">
               <div>
                 <h3 className="text-2xl md:text-3xl font-bold text-brand-lime tracking-widest mb-6 border-b border-brand-lime/30 pb-4 inline-block">01. THE PULSE</h3>
@@ -240,14 +245,14 @@ export default function CoffeeCanvas() {
           </motion.div>
 
           {/* Section 3: The Branded Punchline */}
-          <motion.div style={{ opacity: s3Opacity, scale: s3Scale }} className="absolute inset-0 flex flex-col items-center justify-center bg-brand-dark/90 backdrop-blur-md">
+          <motion.div style={{ opacity: s3Opacity, scale: s3Scale }} className="absolute inset-0 flex flex-col items-center justify-center bg-brand-dark/95">
             <div className="flex flex-col items-center mb-16">
               <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter text-brand-lime leading-none drop-shadow-2xl">ANYTIME.</h1>
               <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter text-white leading-none drop-shadow-2xl">ANYTHING.</h1>
               <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter text-white/20 leading-none drop-shadow-2xl">24SEVEN.</h1>
             </div>
             
-            <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-full px-6 py-3 md:px-8 md:py-4 flex items-center gap-4 shadow-2xl">
+            <div className="bg-white/10 border border-white/20 rounded-full px-6 py-3 md:px-8 md:py-4 flex items-center gap-4 shadow-2xl">
               <div className="w-3 h-3 md:w-4 md:h-4 bg-brand-lime rounded-full animate-pulse shadow-[0_0_15px_rgba(145,230,0,0.8)]" />
               <span className="text-white font-mono tracking-widest text-xs md:text-sm">CURRENT STATUS: OPEN & BREWING</span>
             </div>
